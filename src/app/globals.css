@@ -67,6 +67,9 @@
   --transition-duration-slow: 500ms;
   --transition-duration-slower: 800ms;
   --transition-duration-slowest: 1200ms;
+
+  --font-inter: var(--font-inter);
+  --font-archivo: var(--font-archivo);
 }
 
 body {
