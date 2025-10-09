@@ -6,7 +6,7 @@ const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-archivo",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "900"],
 });
 
 const inter = Inter({
@@ -28,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${archivo.variable} ${inter.variable} antialiased`}>
+      <body
+        className={`p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

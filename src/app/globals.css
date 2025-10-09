@@ -7,6 +7,7 @@
   /* Colors */
   --color-brand-primary: rgb(147, 243, 170); /* #93F3AA */
   --color-brand-secondary: rgb(115, 34, 255); /* #7322FF */
+  --color-accent: rgb(254, 123, 255); /* #FE7BFF */
 
   --color-light: rgb(255, 255, 255); /* #FFFFFF */
   --color-muted: rgb(75, 82, 111); /* #4b526f gray font (description, price) */
@@ -16,18 +17,19 @@
   --color-focus: rgb(0, 153, 255); /* input focus / interactive accent */
 
   /* Font Sizes */
-  --font-tiny: 0.625rem; /* 10px */
-  --font-compact: 0.75rem; /* 12px */
-  --font-small: 0.875rem; /* 14px */
-  --font-core: 1rem; /* 16px */
-  --font-medium: 1.125rem; /* 18px */
-  --font-large: 1.25rem; /* 20px */
-  --font-xlarge: 1.375rem; /* 22px */
-  --font-2xlarge: 1.5rem; /* 24px */
-  --font-3xlarge: 2.125rem; /* 34px */
-  --font-4xlarge: 3.5rem; /* 56px */
-  --font-5xlarge: 4rem; /* 64px */
-  --font-giant: 10.9375rem; /* 175px */
+  --text-tiny: 0.625rem; /* 10px */
+  --text-compact: 0.75rem; /* 12px */
+  --text-small: 0.875rem; /* 14px */
+  --text-core: 1rem; /* 16px */
+  --text-medium: 1.125rem; /* 18px */
+  --text-large: 1.25rem; /* 20px */
+  --text-xlarge: 1.375rem; /* 22px */
+  --text-2xlarge: 1.5rem; /* 24px */
+  --text-3xlarge: 2.125rem; /* 34px */
+  --text-4xlarge: 3.5rem; /* 56px */
+  --text-5xlarge: 4rem; /* 64px */
+  --text-6xlarge: 4.75rem; /* 76px */
+  --text-giant: 10.9375rem; /* 175px */
 
   /* Spacing */
   --spacing-micro: 0.5rem; /* 8px */
