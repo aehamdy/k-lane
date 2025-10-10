@@ -7,7 +7,7 @@ interface ProductsSectionProps {
 
 function ProductsSection({ products }: ProductsSectionProps) {
   return (
-    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-base">
+    <ul className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-base">
       {products
         .filter((product) => !product.isPlus)
         .map((product) => (
