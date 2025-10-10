@@ -79,3 +79,7 @@ body {
   color: var(--color-dark);
   font-family: var(--font-inter), sans-serif;
 }
+
+.page-vertical-gap {
+  @apply space-y-micro lg:space-y-base;
+}
