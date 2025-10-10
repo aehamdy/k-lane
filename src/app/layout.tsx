@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
+import StayInTouch from "@/components/common/StayInTouch";
+import Footer from "@/components/common/Footer";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -29,9 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
+        className={`space-y-2 lg:space-y-base p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
       >
         {children}
+        <StayInTouch />
+        <Footer />
       </body>
     </html>
   );
