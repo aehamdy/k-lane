@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`space-y-2 lg:space-y-base p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
+        className={`page-vertical-gap p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
       >
         {children}
         <StayInTouch />
