@@ -1,10 +1,19 @@
 import { CgMenuMotion } from "react-icons/cg";
 import { GoHeartFill } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
-import { LuClock3, LuMail, LuMapPin, LuPhone } from "react-icons/lu";
+import {
+  LuClock3,
+  LuFacebook,
+  LuInstagram,
+  LuMail,
+  LuMapPin,
+  LuPhone,
+  LuX,
+  LuYoutube,
+} from "react-icons/lu";
 import { PiStarFourFill } from "react-icons/pi";
 
-type IconName =
+export type IconName =
   | "menu"
   | "close"
   | "star"
@@ -12,7 +21,11 @@ type IconName =
   | "mapPin"
   | "clock"
   | "phone"
-  | "mail";
+  | "mail"
+  | "facebook"
+  | "twitter"
+  | "instagram"
+  | "youtube";
 
 const iconMap = {
   menu: CgMenuMotion,
@@ -23,6 +36,10 @@ const iconMap = {
   clock: LuClock3,
   phone: LuPhone,
   mail: LuMail,
+  facebook: LuFacebook,
+  twitter: LuX,
+  instagram: LuInstagram,
+  youtube: LuYoutube,
 };
 
 interface IconProps {
