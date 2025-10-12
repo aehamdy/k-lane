@@ -30,7 +30,7 @@ function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
                 <Image
                   src={heroImage}
                   alt="hero-image"
-                  className="w-full h-full object-cover"
+                  className="max-w-full h-auto object-cover"
                 />
               </div>
             )}
