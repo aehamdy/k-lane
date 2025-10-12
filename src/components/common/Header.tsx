@@ -4,7 +4,7 @@ import Nav from "@/components/common/Nav";
 function Header() {
   return (
     <header className="bg-brand-primary rounded-pill">
-      <div className="relative flex justify-between items-center py-medium px-3xl">
+      <div className="relative flex justify-between items-center py-small lg:py-regular px-regular lg:px-3xl">
         <Logo variant="primary" />
 
         <Nav />
