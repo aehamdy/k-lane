@@ -8,12 +8,12 @@ interface HeroSectionProps {
 }
 function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
   return (
-    <section>
-      <div className="flex flex-col py-8xl px-xl bg-brand-secondary rounded-lg">
-        <div className="flex flex-col items-center gap text-light">
+    <section className="relative pt-14 bg-brand-secondary rounded-lg overflow-hidden">
+      <div className="flex flex-col lg:justify-center h-[23dvh] lg:h-[60dvh] py-[24px] px-xl">
+        <div className="relative flex flex-col items-center gap text-light">
           <Heading
             level={1}
-            className="font-archivo font-black text-5xlarge lg:text-giant uppercase"
+            className="font-archivo font-black text-5xlarge lg:text-giant lg:leading-56 uppercase"
           >
             {heading}
           </Heading>
@@ -26,7 +26,7 @@ function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
             )}
 
             {heroImage && (
-              <div className="">
+              <div className="absolute top-12 lg:top-[35%] start-1/2 -translate-x-1/2 w-[155px] lg:w-[315px] h-[255px] lg:h-[540px]">
                 <Image
                   src={heroImage}
                   alt="hero-image"

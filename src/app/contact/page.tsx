@@ -1,3 +1,4 @@
+import HeaderWrapper from "@/components/common/HeaderWrapper";
 import Heading from "@/components/common/Heading";
 import HeroSection from "@/components/common/HeroSection";
 import Icon from "@/components/common/Icon";
@@ -6,7 +7,9 @@ import Link from "next/link";
 
 function page() {
   return (
-    <main className="page-vertical-gap">
+    <main className="relative page-vertical-gap">
+      <HeaderWrapper />
+
       <HeroSection heading="Contact" subheading="We’d love to hear from you!" />
 
       <section className="flex flex-col gap-base p-2 lg:p-base bg-soft rounded-base lg:rounded-xl">
