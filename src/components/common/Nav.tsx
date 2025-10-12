@@ -13,7 +13,7 @@ function Nav() {
   return (
     <nav className="text-dark">
       {/* Mobile toggle button */}
-      <div className="lg:hidden">
+      <div className="lg:hidden flex justify-center items-center">
         <button type="button" onClick={toggleMenu}>
           <Icon name={isOpen ? "close" : "menu"} />
         </button>
@@ -35,7 +35,7 @@ function Nav() {
       </ul>
 
       {/* Desktop nav */}
-      <ul className="hidden lg:flex items-center gap-xl font-bold">
+      <ul className="hidden lg:flex items-center gap-xl font-bold lg:text-medium">
         {navLinks.map((link) => (
           <li key={link.id}>
             <Link href={link.href}>{link.name}</Link>
