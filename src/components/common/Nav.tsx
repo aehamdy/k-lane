@@ -14,7 +14,7 @@ function Nav() {
     <nav className="text-dark">
       {/* Mobile toggle button */}
       <div className="lg:hidden flex justify-center items-center">
-        <button type="button" onClick={toggleMenu}>
+        <button type="button" onClick={toggleMenu} className="cursor-pointer">
           <Icon name={isOpen ? "close" : "menu"} />
         </button>
       </div>
