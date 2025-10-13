@@ -30,7 +30,7 @@ function StayInTouch() {
 
           <button
             type="button"
-            className="lg:hidden w-full py-compact px-regular text-light bg-brand-secondary rounded-pill"
+            className="lg:hidden w-full py-compact px-regular font-bold text-light hover:text-brand-primary bg-brand-secondary rounded-pill cursor-pointer duration-slow"
           >
             Subscribe
           </button>
