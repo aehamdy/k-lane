@@ -4,8 +4,9 @@ import blackBagImage from "@/assets/images-section/images-section-2.webp";
 import dessertImage from "@/assets/images-section/images-section-3.webp";
 import Heading from "@/components/common/Heading";
 import Icon from "@/components/common/Icon";
+import MarqueeText from "@/components/common/MarqueeText";
 
-const marqueeDishes = [
+const dishes = [
   "Mori Salad",
   "Frappe Lane",
   "Choco Wave",
@@ -16,11 +17,11 @@ const marqueeDishes = [
 function ImagesSection() {
   return (
     <section className="grid grid-cols-1 gap-base">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-micro md:gap-base h-[85dvh] lg:h-[60dvh]">
-        <div className="relative lg:col-span-7 rounded-lg overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-micro md:gap-base h-[85dvh] lg:h-[75dvh]">
+        <div className="children-1 relative lg:col-span-7 rounded-lg overflow-hidden">
           <Heading
             level={2}
-            className="absolute top-1/2 start-1/2 -translate-y-1/2 -translate-x-1/2 font-bold text-4xlarge lg:text-6xarge text-light"
+            className="absolute top-1/2 start-1/2 -translate-y-1/2 -translate-x-1/2 font-bold text-4xlarge lg:text-6xlarge text-light"
           >
             Munch!
           </Heading>
@@ -31,18 +32,18 @@ function ImagesSection() {
           />
         </div>
 
-        <div className="lg:col-span-5 flex flex-col justify-end items-center gap-micro md:gap-base pt-8xl bg-brand-primary rounded-lg overflow-hidden">
+        <div className="children-2 lg:col-span-5 flex flex-col justify-end items-center md:gap-base lg:pt-8xl bg-brand-primary rounded-lg overflow-hidden">
           <div className="flex flex-col items-center gap-micro text-dark">
             <Heading level={5} className="font-bold text-large lg:text-3xlarge">
               The one&reg; is back
             </Heading>
 
-            <p className="text-dark/70 w-3/4 text-center">
+            <p className="text-dark/70 w-[65%] text-center">
               Selected from the best coffee-growing regions aroudn the world
             </p>
           </div>
 
-          <div className="w-[500px] h-[284px] md:h-[248px] lg:h-[340px]">
+          <div className="w-[500px] h-[284px] md:h-[248px] lg:h-[340px] leading-none">
             <Image
               src={blackBagImage}
               alt="bag-image"
@@ -52,8 +53,8 @@ function ImagesSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-micro md:gap-base h-[85dvh] lg:h-[60dvh]">
-        <div className="relative lg:col-span-5 rounded-lg overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-micro md:gap-base h-[85dvh] lg:h-[75dvh]">
+        <div className="relative lg:col-span-6 rounded-lg overflow-hidden">
           <Image
             src={dessertImage}
             alt="dessert-image"
@@ -75,7 +76,11 @@ function ImagesSection() {
                     d="M95.5,95.5 m -88,0 a 88,88 0 1,1 176,0 a 88,88 0 1,1 -176,0"
                   />
                 </defs>
-                <text fill="currentColor" fontSize="14" letterSpacing="2">
+                <text
+                  fill="currentColor"
+                  letterSpacing="2"
+                  className="font-bold text-base"
+                >
                   <textPath
                     href="#circlePath"
                     startOffset="50%"
@@ -95,29 +100,32 @@ function ImagesSection() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 flex justify-center items-center pt-8xl text-large bg-brand-secondary rounded-lg overflow-hidden">
+        <div className="lg:col-span-6 flex justify-center items-center pt-8xl text-large bg-brand-secondary rounded-lg overflow-hidden">
           <div className="-rotate-12">
-            <div className="py-xl bg-accent">
-              <ul className="flex items-center gap-regular">
-                <li className="font-bold text-2xlarge">
-                  New Menu <Icon name="star" />
-                </li>
-              </ul>
+            <div className="py-xl">
+              <MarqueeText>
+                <ul className="flex items-center gap-regular py-xl text-brand-secondary bg-accent">
+                  <li className="mx-2">
+                    <div className="flex items-center font-bold text-2xlarge">
+                      New Menu <Icon name="star" />
+                    </div>
+                  </li>
+                </ul>
+              </MarqueeText>
             </div>
 
             <div className="py-xl">
-              {/* <Marquee speed={40} gradient={false} autoFill> */}
-              <ul className="flex items-center gap-regular">
-                {marqueeDishes.map((item, index) => (
-                  <li
-                    key={index}
-                    className="py-small px-regular font-bold text-2xlarge text-accent bg-[#5938de] whitespace-nowrap border-2 border-accent rounded-pill"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              {/* </Marquee> */}
+              <MarqueeText>
+                <ul className="flex items-center gap-regular">
+                  {dishes.map((dish, index) => (
+                    <li key={index}>
+                      <div className="py-small px-regular font-bold text-2xlarge text-accent bg-[#5938de] whitespace-nowrap border-2 border-accent rounded-pill">
+                        {dish}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </MarqueeText>
             </div>
           </div>
         </div>
