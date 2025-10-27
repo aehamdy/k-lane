@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import pizzaImage from "@/assets/images-section/images-section-1.webp";
 import blackBagImage from "@/assets/images-section/images-section-2.webp";
 import dessertImage from "@/assets/images-section/images-section-3.webp";
 import Heading from "@/components/common/Heading";
 import Icon from "@/components/common/Icon";
-import MarqueeText from "@/components/common/MarqueeText";
+import Marquee from "react-marquee-slider";
 
 const dishes = [
   "Mori Salad",
@@ -101,31 +103,45 @@ function ImagesSection() {
         </div>
 
         <div className="lg:col-span-6 flex justify-center items-center pt-8xl text-large bg-brand-secondary rounded-lg overflow-hidden">
-          <div className="-rotate-12">
-            <div className="py-xl">
-              <MarqueeText>
-                <ul className="flex items-center gap-regular py-xl text-brand-secondary bg-accent">
-                  <li className="mx-2">
-                    <div className="flex items-center font-bold text-2xlarge">
-                      New Menu <Icon name="star" />
-                    </div>
-                  </li>
-                </ul>
-              </MarqueeText>
+          <div className="rotate-[-13deg] scale-110">
+            <div className="flex items-center gap-regular py-medium text-brand-secondary bg-accent">
+              <Marquee
+                velocity={12}
+                direction="rtl"
+                scatterRandomly={false}
+                resetAfterTries={200}
+                onInit={() => {}}
+                onFinish={() => {}}
+              >
+                {Array.from({ length: 10 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 px-regular font-bold text-2xlarge text-brand-secondary whitespace-nowrap rounded-pill"
+                  >
+                    NEW MENU <Icon name="star" />
+                  </div>
+                ))}
+              </Marquee>
             </div>
 
             <div className="py-xl">
-              <MarqueeText>
-                <ul className="flex items-center gap-regular">
-                  {dishes.map((dish, index) => (
-                    <li key={index}>
-                      <div className="py-small px-regular font-bold text-2xlarge text-accent bg-[#5938de] whitespace-nowrap border-2 border-accent rounded-pill">
-                        {dish}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </MarqueeText>
+              <Marquee
+                velocity={12}
+                direction="ltr"
+                scatterRandomly={false}
+                resetAfterTries={200}
+                onInit={() => {}}
+                onFinish={() => {}}
+              >
+                {dishes.map((dish, index) => (
+                  <div
+                    key={index}
+                    className="mx-4 py-small px-regular font-bold text-2xlarge text-accent bg-[#5938de] whitespace-nowrap border-3 border-accent rounded-pill"
+                  >
+                    {dish}
+                  </div>
+                ))}
+              </Marquee>
             </div>
           </div>
         </div>
