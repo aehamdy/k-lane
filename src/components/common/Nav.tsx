@@ -9,6 +9,7 @@ function Nav({ isProductPage }: { isProductPage: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <nav
@@ -37,7 +38,9 @@ function Nav({ isProductPage }: { isProductPage: boolean }) {
       >
         {navLinks.map((link) => (
           <li key={link.id} className="w-full py-1.5 font-bold">
-            <Link href={link.href}>{link.name}</Link>
+            <Link href={link.href} onClick={closeMenu}>
+              {link.name}
+            </Link>
           </li>
         ))}
       </ul>
