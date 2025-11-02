@@ -6,7 +6,7 @@ import blackBagImage from "@/assets/images-section/images-section-2.webp";
 import dessertImage from "@/assets/images-section/images-section-3.webp";
 import Heading from "@/components/common/Heading";
 import Icon from "@/components/common/Icon";
-import Marquee from "react-marquee-slider";
+import MarqueeText from "../common/MarqueeText";
 
 const dishes = [
   "Mori Salad",
@@ -105,14 +105,7 @@ function ImagesSection() {
         <div className="lg:col-span-6 flex justify-center items-center pt-8xl text-large bg-brand-secondary rounded-lg overflow-hidden">
           <div className="rotate-[-13deg] scale-110">
             <div className="flex items-center gap-regular py-medium text-brand-secondary bg-accent">
-              <Marquee
-                velocity={12}
-                direction="rtl"
-                scatterRandomly={false}
-                resetAfterTries={200}
-                onInit={() => {}}
-                onFinish={() => {}}
-              >
+              <MarqueeText>
                 {Array.from({ length: 10 }).map((_, index) => (
                   <div
                     key={index}
@@ -121,27 +114,20 @@ function ImagesSection() {
                     NEW MENU <Icon name="star" />
                   </div>
                 ))}
-              </Marquee>
+              </MarqueeText>
             </div>
 
             <div className="py-xl">
-              <Marquee
-                velocity={12}
-                direction="ltr"
-                scatterRandomly={false}
-                resetAfterTries={200}
-                onInit={() => {}}
-                onFinish={() => {}}
-              >
+              <MarqueeText>
                 {dishes.map((dish, index) => (
                   <div
                     key={index}
-                    className="mx-4 py-small px-regular font-bold text-2xlarge text-accent bg-[#5938de] whitespace-nowrap border-3 border-accent rounded-pill"
+                    className="flex items-center mx-4 py-small px-regular font-bold text-2xlarge text-accent bg-[#5938de] whitespace-nowrap border-3 border-accent rounded-pill"
                   >
                     {dish}
                   </div>
                 ))}
-              </Marquee>
+              </MarqueeText>
             </div>
           </div>
         </div>
