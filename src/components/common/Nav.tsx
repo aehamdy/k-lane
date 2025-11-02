@@ -5,13 +5,19 @@ import navLinks from "@/config/navLinks";
 import Link from "next/link";
 import { useState } from "react";
 
-function Nav() {
+function Nav({ isProductPage }: { isProductPage: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
-    <nav className="text-dark">
+    <nav
+      className={`${
+        isProductPage
+          ? "text-light bg-brand-secondary"
+          : "text-dark bg-brand-primary"
+      }`}
+    >
       {/* Mobile toggle button */}
       <div className="lg:hidden flex justify-center items-center">
         <button type="button" onClick={toggleMenu} className="cursor-pointer">
@@ -21,7 +27,9 @@ function Nav() {
 
       {/* Mobile dropdown */}
       <ul
-        className={`lg:hidden absolute top-[110%] start-0 w-full flex flex-col py-xl px-regular bg-brand-primary rounded-xl z-50 transition-all duration-slow ease-in-out origin-top ${
+        className={`lg:hidden absolute top-[110%] start-0 w-full flex flex-col py-xl px-regular ${
+          isProductPage ? "bg-brand-secondary" : "bg-brand-primary"
+        } rounded-xl z-50 transition-all duration-slow ease-in-out origin-top ${
           isOpen
             ? "opacity-100 scale-y-100 pointer-events-auto"
             : "opacity-0 scale-y-0 pointer-events-none"
