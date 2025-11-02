@@ -11,7 +11,7 @@ import {
   LuX,
   LuYoutube,
 } from "react-icons/lu";
-import { PiStarFourFill } from "react-icons/pi";
+import { PiCoffeeThin, PiStarFourFill, PiTruckThin } from "react-icons/pi";
 
 export type IconName =
   | "menu"
@@ -25,7 +25,9 @@ export type IconName =
   | "facebook"
   | "twitter"
   | "instagram"
-  | "youtube";
+  | "youtube"
+  | "truck"
+  | "coffee";
 
 const iconMap = {
   menu: CgMenuMotion,
@@ -40,6 +42,8 @@ const iconMap = {
   twitter: LuX,
   instagram: LuInstagram,
   youtube: LuYoutube,
+  truck: PiTruckThin,
+  coffee: PiCoffeeThin,
 };
 
 interface IconProps {
