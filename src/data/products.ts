@@ -12,6 +12,7 @@ const commonDescription =
 export type Product = {
   id: number;
   title: string;
+  slug: string;
   image: StaticImageData | string;
   price: number;
   subtitle: string;
@@ -24,6 +25,7 @@ const products: Product[] = [
   {
     id: 1,
     title: "Kozmo",
+    slug: "kozmo",
     image: KozmoImage,
     price: 19.99,
     subtitle: "Ground coffee, medium roast",
@@ -32,6 +34,7 @@ const products: Product[] = [
   {
     id: 2,
     title: "Lunar",
+    slug: "lunar",
     image: LunarImage,
     price: 24.99,
     subtitle: "Ground coffee, light roast",
@@ -40,6 +43,7 @@ const products: Product[] = [
   {
     id: 3,
     title: "The One®",
+    slug: "the-one",
     image: TheOneImage,
     price: 14.99,
     subtitle: "Ground coffee, medium roast",
@@ -48,6 +52,7 @@ const products: Product[] = [
   {
     id: 4,
     title: "Arkan",
+    slug: "arkan",
     image: ArkanImage,
     price: 19.99,
     subtitle: "Ground coffee, light roast",
@@ -56,6 +61,7 @@ const products: Product[] = [
   {
     id: 5,
     title: "Nairo",
+    slug: "nairo",
     image: NairoImage,
     price: 19.99,
     subtitle: "Ground coffee, medium roast",
@@ -64,6 +70,7 @@ const products: Product[] = [
   {
     id: 6,
     title: "Krishna",
+    slug: "krishna",
     image: KrishnaImage,
     price: 19.99,
     subtitle: "Ground coffee, medium roast",
@@ -74,6 +81,7 @@ const products: Product[] = [
   {
     id: 7,
     title: "Kozmo Plus",
+    slug: "kozmo-plus",
     image: KozmoImage,
     price: 34.99,
     subtitle: "Ground coffee, double medium roast",
@@ -83,6 +91,7 @@ const products: Product[] = [
   {
     id: 8,
     title: "Lunar Plus",
+    slug: "lunar-plus",
     image: LunarImage,
     price: 34.99,
     subtitle: "Ground coffee, double light roast",
@@ -92,6 +101,7 @@ const products: Product[] = [
   {
     id: 9,
     title: "The One® Plus",
+    slug: "the-one-plus",
     image: TheOneImage,
     price: 49.99,
     subtitle: "Ground coffee, double medium roast",
@@ -101,6 +111,7 @@ const products: Product[] = [
   {
     id: 10,
     title: "Arkan Plus",
+    slug: "arkan-plus",
     image: ArkanImage,
     price: 34.99,
     subtitle: "Ground coffee, double light roast",
@@ -110,6 +121,7 @@ const products: Product[] = [
   {
     id: 11,
     title: "Nairo Plus",
+    slug: "nairo-plus",
     image: NairoImage,
     price: 34.99,
     subtitle: "Ground coffee, double medium roast",
@@ -119,6 +131,7 @@ const products: Product[] = [
   {
     id: 12,
     title: "Krishna Plus",
+    slug: "krishna-plus",
     image: KrishnaImage,
     price: 34.99,
     subtitle: "Ground coffee, double medium roast",
