@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 
 type ProductPageProps = { params: { productSlug: string } };
 
-async function page({ params }: ProductPageProps) {
-  const { productSlug } = await params;
+function page({ params }: ProductPageProps) {
+  const { productSlug } = params;
 
   const product = products.find((product) => product.slug === productSlug);
 
@@ -17,7 +17,6 @@ async function page({ params }: ProductPageProps) {
   return (
     <main className="">
       <div className="pt-8xl lg:pt-11xl px-micro lg:px-base pb-micro lg:pb-base">
-        {/* <div className="flex flex-col lg:flex-row items-center lg:items-start gap-base"> */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-base">
           <div className="lg:col-span-3 overflow-hidden">
             <Image

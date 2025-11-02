@@ -3,6 +3,7 @@ import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import StayInTouch from "@/components/common/StayInTouch";
 import Footer from "@/components/common/Footer";
+import HeaderWrapper from "@/components/common/HeaderWrapper";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -31,10 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`page-vertical-gap p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
+        className={`relative page-vertical-gap p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
       >
+        <HeaderWrapper />
+
         {children}
+
         <StayInTouch />
+
         <Footer />
       </body>
     </html>

@@ -1,14 +1,9 @@
 import Image from "next/image";
 import heroImage from "@/assets/heroes/hero-section-image.webp";
-import Header from "@/components/common/Header";
 
 function Hero() {
   return (
     <section className="relative flex justify-center items-center h-[50dvh] lg:h-[105dvh] pt-9xl lg:pt-13xl px-base bg-brand-secondary rounded-lg overflow-hidden">
-      <div className="absolute start-1/2 top-base -translate-x-1/2 w-[92%] lg:w-[96%] z-50">
-        <Header />
-      </div>
-
       <div className="absolute z-40 top-1/2 start-1/2 -translate-y-[55%] -translate-x-1/2 flex flex-col">
         <div className="relative">
           <h1 className="flex flex-col items-center font-archivo font-black text-6xl md:text-7xlarge lg:text-giant text-light">

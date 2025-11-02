@@ -6,7 +6,7 @@ import Heading from "@/components/common/Heading";
 
 export default function Home() {
   return (
-    <main className="space-y-micro lg:space-y-base">
+    <main className="relative space-y-micro lg:space-y-base">
       <Hero />
 
       <ImagesSection />

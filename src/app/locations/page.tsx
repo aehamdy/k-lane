@@ -1,4 +1,3 @@
-import HeaderWrapper from "@/components/common/HeaderWrapper";
 import HeroSection from "@/components/common/HeroSection";
 import LocationCard from "@/components/locations/LocationCard";
 import locations from "@/data/locations";
@@ -6,8 +5,6 @@ import locations from "@/data/locations";
 function page() {
   return (
     <main className="relative page-vertical-gap">
-      <HeaderWrapper />
-
       <HeroSection
         heading="Find Us"
         subheading="Come over, you won't regret it!"
