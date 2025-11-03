@@ -1,19 +1,58 @@
+"use client";
+
 import Heading from "@/components/common/Heading";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useEffect } from "react";
 
 function StayInTouch() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+      el,
+      { y: 100, opacity: 0.4 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: false, // <-- replays every time it enters the viewport
+        },
+      }
+    );
+  }, []);
+
   return (
-    <section className="flex justify-center items-center py-9xl px-base bg-brand-primary rounded-lg">
-      <div className="flex flex-col gap-xl w-full lg:w-1/2">
+    <section className="flex justify-center items-center py-[110px] px-base bg-brand-primary rounded-lg">
+      <div
+        ref={wrapperRef}
+        className="flex flex-col items-center gap-xl w-full lg:w-1/2"
+      >
         <div className="flex flex-col items-center gap-micro text-dark">
-          <Heading level={4} className="font-bold text-3xlarge lg:text-4xlarge">
+          <Heading level={4} className="font-bold text-4xlarge lg:text-4xlarge">
             Stay in touch!
           </Heading>
 
-          <p className="">Latest offers, news, & goodies to your inbox.</p>
+          <p className="font-semibold text-muted">
+            Latest offers, news, & goodies to your inbox.
+          </p>
         </div>
 
-        <form action="" className="flex flex-col items-center gap-base">
-          <div className="w-full flex items-center gap-xl lg:p-tiny bg-white rounded-pill">
+        <form
+          action=""
+          className="flex flex-col items-center gap-base lg:w-3/4"
+        >
+          <div className="w-full flex items-center gap-xl lg:p-tiny lg:ps-regular bg-white rounded-pill">
             <input
               type="email"
               placeholder="Your email address"
