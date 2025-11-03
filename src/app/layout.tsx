@@ -4,6 +4,7 @@ import "./globals.css";
 import StayInTouch from "@/components/common/StayInTouch";
 import Footer from "@/components/common/Footer";
 import HeaderWrapper from "@/components/common/HeaderWrapper";
+import Cursor from "@/components/common/Cursor";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -34,6 +35,8 @@ export default function RootLayout({
       <body
         className={`relative page-vertical-gap p-micro lg:p-base bg-white ${archivo.variable} ${inter.variable} antialiased`}
       >
+        <Cursor />
+
         <HeaderWrapper />
 
         {children}
