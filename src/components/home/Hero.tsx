@@ -85,22 +85,61 @@ function Hero() {
   }, []);
 
   // Animate coffee beans
+  // useEffect(() => {
+  //   const el = coffeeBeansRef.current;
+  //   if (!el) return;
+
+  //   gsap.fromTo(
+  //     el,
+  //     { y: 0, opacity: 0 },
+  //     {
+  //       // y: -200,
+  //       y: "-50%",
+  //       opacity: 1,
+  //       scale: 0.85,
+  //       duration: 1,
+  //       delay: 0.9,
+  //       ease: "power2.out",
+  //     }
+  //   );
+  // }, []);
+  // Animate coffee beans
   useEffect(() => {
     const el = coffeeBeansRef.current;
     if (!el) return;
 
-    gsap.fromTo(
-      el,
-      { y: 0, opacity: 0 },
+    const mm = gsap.matchMedia();
+
+    mm.add(
       {
-        y: -200,
-        opacity: 1,
-        scale: 0.85,
-        duration: 1,
-        delay: 0.9,
-        ease: "power2.out",
+        // Define media query breakpoints
+        isMobile: "(max-width: 768px)",
+        isTablet: "(min-width: 769px)",
+        isDesktop: "(min-width: 1024px)",
+      },
+      (context) => {
+        const { isMobile, isTablet, isDesktop } = context.conditions!;
+
+        gsap.fromTo(
+          el,
+          {
+            y: isMobile ? 400 : 0,
+            opacity: 0,
+          },
+          {
+            y: isMobile ? 0 : -200,
+            opacity: 1,
+            scale: isMobile ? 1 : 0.85,
+            duration: 1,
+            delay: isMobile ? 0.5 : 0.9,
+            ease: "power2.out",
+          }
+        );
       }
     );
+
+    // cleanup to avoid duplicate animations when resizing
+    return () => mm.revert();
   }, []);
 
   // Animate sticker
@@ -126,7 +165,7 @@ function Hero() {
     <section className="relative flex justify-center items-center h-[50dvh] lg:h-[105dvh] pt-9xl lg:pt-13xl px-base bg-brand-secondary rounded-lg overflow-hidden">
       <div className="absolute z-40 top-1/2 start-1/2 -translate-y-[40%] -translate-x-1/2 flex flex-col">
         <div className="relative">
-          <h1 className="relative flex flex-col items-center font-archivo font-black text-6xl md:text-7xlarge lg:text-giant text-light">
+          <h1 className="relative flex flex-col items-center font-archivo font-black text-6xl md:text-6xlarge lg:text-giant text-light">
             <div className="relative">
               <div ref={mainTitleRef} className="relative flex">
                 <span className="">K</span>
@@ -140,7 +179,7 @@ function Hero() {
               <div className="">
                 <div
                   ref={coffeeBeansRef}
-                  className="absolute top-[60%] translate-y-[12%] lg:translate-y-[15%] start-1/2 -translate-x-[40%] md:-translate-x-[60%]"
+                  className="absolute top-[60%] translate-y-[-50%] lg:translate-y-[15%] start-1/2 -translate-x-[55%] md:-translate-x-[60%]"
                 >
                   <Image
                     src={coffeBeansImage}
@@ -151,7 +190,7 @@ function Hero() {
               </div>
             </div>
 
-            <div className="flex items-center gap-7">
+            <div className="flex items-center gap-4 lg:gap-7">
               <span
                 ref={(el) => {
                   if (el) sideLettersRef.current[0] = el;
@@ -174,7 +213,7 @@ function Hero() {
 
           <div
             ref={heroImageRef}
-            className="absolute top-[22%] translate-y-[12%] lg:translate-y-[15%] start-1/2 -translate-x-[40%] md:-translate-x-[50%] rotate-[-16deg] z-30 "
+            className="absolute top-[22%] translate-y-[12%] lg:translate-y-[15%] start-1/2 -translate-x-[40%] md:-translate-x-[40%] lg:-translate-x-[50%] rotate-[-16deg] z-30 "
           >
             <div className="relative w-[220px] lg:w-[470px] h-[386px] lg:max-h-[835px] rotate-6">
               <Image
@@ -184,7 +223,7 @@ function Hero() {
               />
               <div
                 ref={stickerRef}
-                className="absolute top-2/10 lg:top-[13%] start-6/10 lg:start-[110%] flex justify-center items-center w-[111px] lg:w-[162px] h-[111px] lg:h-[162px] p-2.5 lg:p-3.5 bg-accent rounded-full"
+                className="absolute top-2/10 md:top-[20%] lg:top-[13%] start-6/10 md:start-full lg:start-[110%] flex justify-center items-center w-[111px] lg:w-[162px] h-[111px] lg:h-[162px] p-2.5 lg:p-3.5 bg-accent rounded-full"
               >
                 <div className="flex justify-center items-center w-full h-full border-2 border-dashed border-brand-secondary rounded-full">
                   <div className="font-bold text-small lg:text-xlarge text-brand-secondary text-center leading-4 lg:leading-7">
