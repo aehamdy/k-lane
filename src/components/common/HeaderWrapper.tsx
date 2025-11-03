@@ -49,7 +49,7 @@ function HeaderWrapper() {
       {/* Normal header */}
       <div
         ref={normalHeaderRef}
-        className="absolute start-1/2 top-2xl -translate-x-1/2 w-[92%] lg:w-[96%] z-50"
+        className="absolute start-1/2 top-3xl -translate-x-1/2 w-[92%] lg:w-[96%] z-50"
       >
         <Header />
       </div>
@@ -57,7 +57,7 @@ function HeaderWrapper() {
       {/* Sticky header */}
       <div
         ref={stickyHeaderRef}
-        className="fixed top-regular start-1/2 -translate-x-1/2 w-[92%] lg:w-[96%] z-[100]"
+        className="fixed top-regular start-1/2 -translate-x-1/2 w-[92%] lg:w-[50%] z-[100]"
       >
         <Header />
       </div>
