@@ -13,6 +13,8 @@ interface HeroSectionProps {
 
 function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
   const headingWrapperRef = useRef<HTMLDivElement>(null);
+  const subheadingWrapperRef = useRef<HTMLParagraphElement>(null);
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
 
   // Animate heading
   useEffect(() => {
@@ -27,6 +29,44 @@ function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
         y: 0,
         opacity: 1,
         duration: 1.5,
+        ease: "power2.out",
+      }
+    );
+  }, []);
+
+  // Animate subheading
+  useEffect(() => {
+    const el = subheadingWrapperRef.current;
+    if (!el) return;
+
+    // Animate from slightly below to original position
+    gsap.fromTo(
+      el,
+      { y: 60, opacity: 0 }, // start position
+      {
+        y: 0,
+        opacity: 1,
+        duration: 2,
+        delay: 0.5,
+        ease: "power4.out",
+      }
+    );
+  }, []);
+
+  // Animate image
+  useEffect(() => {
+    const el = imageWrapperRef.current;
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      { y: 60, opacity: 0, rotation: -15 },
+      {
+        y: 0,
+        opacity: 1,
+        rotation: 0,
+        duration: 1.5,
+        delay: 0.5,
         ease: "power2.out",
       }
     );
@@ -47,13 +87,19 @@ function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
 
           <div>
             {subheading && (
-              <p className="font-bold text-large lg:text-3xlarge">
+              <p
+                ref={subheadingWrapperRef}
+                className="font-bold text-large lg:text-3xlarge"
+              >
                 {subheading}
               </p>
             )}
 
             {heroImage && (
-              <div className="absolute top-12 lg:top-[35%] start-1/2 -translate-x-1/2 w-[155px] lg:w-[315px] h-[255px] lg:h-[540px]">
+              <div
+                ref={imageWrapperRef}
+                className="absolute top-12 lg:top-[28%] start-1/2 -translate-x-1/2 w-[155px] lg:w-[315px] h-[255px] lg:h-[540px]"
+              >
                 <Image
                   src={heroImage}
                   alt="hero-image"
