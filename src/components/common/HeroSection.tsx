@@ -13,6 +13,7 @@ interface HeroSectionProps {
 
 function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
   const headingWrapperRef = useRef<HTMLDivElement>(null);
+  const subheadingWrapperRef = useRef<HTMLParagraphElement>(null);
 
   // Animate heading
   useEffect(() => {
@@ -32,6 +33,25 @@ function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
     );
   }, []);
 
+  // Animate subheading
+  useEffect(() => {
+    const el = subheadingWrapperRef.current;
+    if (!el) return;
+
+    // Animate from slightly below to original position
+    gsap.fromTo(
+      el,
+      { y: 60, opacity: 0 }, // start position
+      {
+        y: 0,
+        opacity: 1,
+        duration: 2,
+        delay: 0.5,
+        ease: "power4.out",
+      }
+    );
+  }, []);
+
   return (
     <section className="relative pt-14 bg-brand-secondary rounded-lg overflow-hidden">
       <div className="flex flex-col lg:justify-center h-[23dvh] lg:h-[70dvh] py-[24px] px-xl">
@@ -47,7 +67,10 @@ function HeroSection({ heading, subheading, heroImage }: HeroSectionProps) {
 
           <div>
             {subheading && (
-              <p className="font-bold text-large lg:text-3xlarge">
+              <p
+                ref={subheadingWrapperRef}
+                className="font-bold text-large lg:text-3xlarge"
+              >
                 {subheading}
               </p>
             )}
