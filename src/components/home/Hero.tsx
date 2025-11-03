@@ -84,24 +84,6 @@ function Hero() {
     );
   }, []);
 
-  // Animate sticker
-  useEffect(() => {
-    const el = stickerRef.current;
-    if (!el) return;
-
-    gsap.fromTo(
-      el,
-      { scale: 0, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.5,
-        delay: 1.2,
-        ease: "power2.out",
-      }
-    );
-  }, []);
-
   // Animate coffee beans
   useEffect(() => {
     const el = coffeeBeansRef.current;
@@ -114,9 +96,28 @@ function Hero() {
         y: -200,
         opacity: 1,
         scale: 0.85,
-        duration: 0.8,
+        duration: 1,
         delay: 0.9,
         ease: "power2.out",
+      }
+    );
+  }, []);
+
+  // Animate sticker
+  useEffect(() => {
+    const el = stickerRef.current;
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      { scale: 0, opacity: 0, rotation: 0 }, // starts slightly rotated
+      {
+        scale: 1,
+        opacity: 1,
+        rotation: 50, // rotates into normal position
+        duration: 0.7,
+        delay: 2,
+        ease: "back.out(1.7)",
       }
     );
   }, []);
@@ -171,17 +172,6 @@ function Hero() {
             </div>
           </h1>
 
-          {/* <div
-            ref={coffeeBeansRef}
-            className="absolute top-[27%] translate-y-[12%] lg:translate-y-[15%] start-1/2 -translate-x-[40%] md:-translate-x-[65%] opacity-0 scale-[0.85] rotate-[-10deg] z-30 "
-          >
-            <Image
-              src={coffeBeansImage}
-              alt="coffe-beans"
-              className="max-w-full h-auto object-cover"
-            />
-          </div> */}
-
           <div
             ref={heroImageRef}
             className="absolute top-[22%] translate-y-[12%] lg:translate-y-[15%] start-1/2 -translate-x-[40%] md:-translate-x-[50%] rotate-[-16deg] z-30 "
@@ -197,7 +187,7 @@ function Hero() {
                 className="absolute top-2/10 lg:top-[13%] start-6/10 lg:start-[110%] flex justify-center items-center w-[111px] lg:w-[162px] h-[111px] lg:h-[162px] p-2.5 lg:p-3.5 bg-accent rounded-full"
               >
                 <div className="flex justify-center items-center w-full h-full border-2 border-dashed border-brand-secondary rounded-full">
-                  <div className="font-bold text-small lg:text-xlarge text-brand-secondary text-center leading-4 lg:leading-7 rotate-[40deg]">
+                  <div className="font-bold text-small lg:text-xlarge text-brand-secondary text-center leading-4 lg:leading-7">
                     Roasted Goodness
                   </div>
                 </div>
