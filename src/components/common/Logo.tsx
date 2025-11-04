@@ -42,11 +42,11 @@ function Logo({ variant, isProductPage }: LogoProps) {
   }, []);
   if (variant === "secondary") {
     return (
-      <div ref={logoRef}>
-        <Link
-          href={ROUTES.home}
-          className="w-[244px] lg:w-[400px] h-[110px] lg:h-[181px]"
-        >
+      <div
+        ref={logoRef}
+        className="max-w-[244px] h-[110px] lg:max-w-[400px] lg:h-[181px]"
+      >
+        <Link href={ROUTES.home}>
           <Image
             src={secondaryLogo}
             alt="Logo"
