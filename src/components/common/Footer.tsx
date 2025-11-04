@@ -1,6 +1,7 @@
 import Logo from "@/components/common/Logo";
 import navLinks from "@/config/navLinks";
 import Link from "next/link";
+import NavItem from "./NavItem";
 
 function Footer() {
   return (
@@ -23,8 +24,8 @@ function Footer() {
 
         <ul className="flex items-center gap-xl font-bold text-light">
           {navLinks.map((link) => (
-            <li key={link.id} className="">
-              <Link href={link.href}>{link.name}</Link>
+            <li key={link.id}>
+              <NavItem link={link} />
             </li>
           ))}
         </ul>
