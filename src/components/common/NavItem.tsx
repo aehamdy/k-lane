@@ -47,7 +47,7 @@ function NavItem({ link }: NavItemProps) {
     >
       <div ref={containerRef} className="relative">
         <span className="block">{link.name}</span>
-        <span className="block absolute top-full left-0">{link.name}</span>
+        <span className="block absolute top-full start-0">{link.name}</span>
       </div>
     </Link>
   );

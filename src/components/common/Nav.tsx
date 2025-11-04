@@ -3,6 +3,7 @@
 import Icon from "@/components/common/Icon";
 import navLinks from "@/config/navLinks";
 import Link from "next/link";
+import NavItem from "./NavItem";
 import { useState } from "react";
 import NavItem from "./NavItem";
 
