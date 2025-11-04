@@ -1,96 +1,86 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 interface MarqueeTextProps {
-  children: ReactNode;
+  children: React.ReactNode;
   speed?: number; // pixels per second
   direction?: "left" | "right";
-  gap?: number; // space between repeats
-  className?: string;
+  gap?: number; // px gap between clones
 }
 
-const MarqueeText: React.FC<MarqueeTextProps> = ({
+export default function MarqueeText({
   children,
   speed = 100,
   direction = "left",
   gap = 40,
-  className = "",
-}) => {
-  const marqueeRef = useRef<HTMLDivElement | null>(null);
-  const tweenRef = useRef<gsap.core.Tween | null>(null);
+}: MarqueeTextProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = marqueeRef.current;
-    if (!el) return;
+    const wrapper = wrapperRef.current;
+    const content = contentRef.current;
+    if (!wrapper || !content) return;
 
-    const animate = () => {
-      const content = el.querySelector<HTMLDivElement>(".marquee__content");
-      if (!content) return;
+    // Reset wrapper
+    wrapper.innerHTML = "";
+    const baseContent = content.cloneNode(true) as HTMLElement;
+    baseContent.style.marginRight = `${gap}px`;
+    wrapper.appendChild(baseContent);
 
-      // Clear existing clone and tween (avoid stacking)
-      if (tweenRef.current) tweenRef.current.kill();
-      const existingClone = el.querySelector(".marquee__clone");
-      if (existingClone) existingClone.remove();
+    const contentWidth = baseContent.offsetWidth;
+    const wrapperWidth = wrapper.offsetWidth;
 
-      // Clone the content for seamless looping
-      const clone = content.cloneNode(true) as HTMLDivElement;
-      clone.classList.add("marquee__clone");
-      el.appendChild(clone);
+    // Clone enough times to fill + overflow
+    const minCopies = Math.ceil(wrapperWidth / contentWidth) + 3;
+    for (let i = 0; i < minCopies; i++) {
+      const clone = content.cloneNode(true) as HTMLElement;
+      clone.style.marginRight = `${gap}px`;
+      wrapper.appendChild(clone);
+    }
 
-      // Force reflow after clone
-      const distance = content.offsetWidth + gap;
-      if (!distance || distance < 5) return; // skip if invalid measurement
+    const totalWidth = contentWidth + gap;
+    const distance = totalWidth;
+    const duration = distance / speed;
 
-      const duration = distance / speed;
+    // Initial position
+    gsap.set(wrapper, { x: direction === "left" ? 0 : -distance });
 
-      // Animate with GSAP
-      tweenRef.current = gsap.to(el.children, {
-        x: direction === "left" ? -distance : distance,
-        duration,
-        ease: "none",
-        repeat: -1,
-        modifiers: {
-          x: gsap.utils.unitize((x) => parseFloat(x) % distance),
+    const tween = gsap.to(wrapper, {
+      x: direction === "left" ? -distance : 0,
+      duration,
+      ease: "none",
+      repeat: -1,
+      modifiers: {
+        x: (x) => {
+          const current = parseFloat(x);
+          if (direction === "left") {
+            return (current % -distance) + "px";
+          } else {
+            // correctly move to the right
+            return (current % distance) - distance + "px";
+          }
         },
-      });
-    };
+      },
+    });
 
-    // Run animation after browser paints (prevents measuring 0 widths)
-    const id = requestAnimationFrame(animate);
-
-    // Handle resizing (responsive recalculation)
-    const handleResize = () => {
-      if (tweenRef.current) tweenRef.current.kill();
-      animate();
-    };
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("load", handleResize);
-
-    // Cleanup
     return () => {
-      cancelAnimationFrame(id);
-      if (tweenRef.current) tweenRef.current.kill();
-      const clone = el.querySelector(".marquee__clone");
-      if (clone) clone.remove();
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("load", handleResize);
+      tween.kill();
     };
-  }, [children, speed, direction, gap]);
+  }, [speed, direction, gap]);
 
   return (
-    <div
-      ref={marqueeRef}
-      className={`marquee overflow-hidden whitespace-nowrap flex ${className}`}
-      style={{ gap: `${gap}px` }}
-    >
-      <div className="marquee__content flex-shrink-0 flex items-center">
-        {children}
+    <div className="overflow-hidden w-full">
+      <div
+        ref={wrapperRef}
+        className="flex whitespace-nowrap will-change-transform"
+      >
+        <div ref={contentRef} className="flex items-center">
+          {children}
+        </div>
       </div>
     </div>
   );
-};
-
-export default MarqueeText;
+}
