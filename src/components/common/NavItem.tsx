@@ -5,11 +5,13 @@ import Link from "next/link";
 import { gsap } from "gsap";
 
 interface NavItemProps {
-  href: string;
-  label: string;
+  link: {
+    href: string;
+    name: string; // changed from label to name
+  };
 }
 
-function NavItem({ href, label }: NavItemProps) {
+function NavItem({ link }: NavItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleEnter = () => {
@@ -38,14 +40,14 @@ function NavItem({ href, label }: NavItemProps) {
 
   return (
     <Link
-      href={href}
+      href={link.href}
       className="relative inline-block overflow-hidden leading-none"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
       <div ref={containerRef} className="relative">
-        <span className="block">{label}</span>
-        <span className="block absolute top-full left-0">{label}</span>
+        <span className="block">{link.name}</span>
+        <span className="block absolute top-full start-0">{link.name}</span>
       </div>
     </Link>
   );

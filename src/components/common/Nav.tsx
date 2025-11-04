@@ -5,6 +5,7 @@ import navLinks from "@/config/navLinks";
 import Link from "next/link";
 import NavItem from "./NavItem";
 import { useState } from "react";
+import NavItem from "./NavItem";
 
 function Nav({ isProductPage }: { isProductPage: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +51,7 @@ function Nav({ isProductPage }: { isProductPage: boolean }) {
       <ul className="hidden lg:flex items-center gap-xl font-bold lg:text-medium">
         {navLinks.map((link) => (
           <li key={link.id}>
-            <NavItem href={link.href} label={link.name} />
+            <NavItem link={link} />
           </li>
         ))}
       </ul>
