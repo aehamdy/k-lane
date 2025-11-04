@@ -1,6 +1,5 @@
 import Logo from "@/components/common/Logo";
 import navLinks from "@/config/navLinks";
-import Link from "next/link";
 import NavItem from "./NavItem";
 
 function Footer() {
