@@ -4,6 +4,7 @@ import Icon from "@/components/common/Icon";
 import navLinks from "@/config/navLinks";
 import Link from "next/link";
 import { useState } from "react";
+import NavItem from "./NavItem";
 
 function Nav({ isProductPage }: { isProductPage: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +50,7 @@ function Nav({ isProductPage }: { isProductPage: boolean }) {
       <ul className="hidden lg:flex items-center gap-xl font-bold lg:text-medium">
         {navLinks.map((link) => (
           <li key={link.id}>
-            <Link href={link.href}>{link.name}</Link>
+            <NavItem link={link} />
           </li>
         ))}
       </ul>
