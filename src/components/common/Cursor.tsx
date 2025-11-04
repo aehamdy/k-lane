@@ -25,7 +25,7 @@ function Cursor() {
   return (
     <div
       id="cursor"
-      className="hidden lg:flex fixed top-1 start-1 w-3.5 h-3.5 bg-accent rounded-full z-[90] pointer-events-none"
+      className="hidden lg:flex fixed top-0 -translate-y-full start-0 -translate-x-full w-3.5 h-3.5 bg-accent rounded-full z-[90] pointer-events-none"
     />
   );
 }
