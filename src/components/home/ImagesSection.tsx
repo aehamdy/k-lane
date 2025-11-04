@@ -118,7 +118,7 @@ function ImagesSection() {
             </div>
 
             <div className="py-xl">
-              <MarqueeText>
+              <MarqueeText direction="right">
                 {dishes.map((dish, index) => (
                   <div
                     key={index}
