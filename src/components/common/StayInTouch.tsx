@@ -39,7 +39,10 @@ function StayInTouch() {
         className="flex flex-col items-center gap-xl w-full lg:w-1/2"
       >
         <div className="flex flex-col items-center gap-micro text-dark">
-          <Heading level={4} className="font-bold text-4xlarge lg:text-4xlarge">
+          <Heading
+            level={4}
+            className="font-bold text-[2.8125rem] md:text-4xlarge"
+          >
             Stay in touch!
           </Heading>
 
@@ -50,7 +53,7 @@ function StayInTouch() {
 
         <form
           action=""
-          className="flex flex-col items-center gap-base lg:w-3/4"
+          className="flex flex-col items-center gap-base w-full md:w-3/4"
         >
           <div className="w-full flex items-center gap-xl lg:p-tiny lg:ps-regular bg-white rounded-pill">
             <input
