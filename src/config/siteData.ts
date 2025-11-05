@@ -24,9 +24,10 @@ interface SiteData {
 }
 
 const siteData: SiteData = {
-  name: "Koffee Lane",
+  name: "K-Lane",
   slogan: "",
-  description: "",
+  description:
+    "Discover K-Lane Coffee — your local destination for specialty brews, fresh pastries, and cozy vibes. Explore our menu, find nearby locations, and get in touch with our team.",
   socials: [
     { id: 1, title: "Facebook", url: "facebook.com", iconName: "facebook" },
     { id: 2, title: "Instagram", url: "instagram.com", iconName: "instagram" },
