@@ -8,8 +8,8 @@ function Cursor() {
       const { clientX, clientY } = e;
 
       gsap.to("#cursor", {
-        x: clientX + 5,
-        y: clientY + 12,
+        x: clientX + 9,
+        y: clientY + 16,
         duration: 0.6,
         ease: "power2.out",
       });
@@ -25,7 +25,7 @@ function Cursor() {
   return (
     <div
       id="cursor"
-      className="hidden lg:flex fixed top-0 -translate-y-full start-0 -translate-x-full w-3.5 h-3.5 bg-accent rounded-full z-[90] pointer-events-none"
+      className="hidden lg:flex fixed top-0 -translate-y-full start-0 -translate-x-full w-3 h-3 bg-accent rounded-full z-[90] pointer-events-none"
     />
   );
 }
