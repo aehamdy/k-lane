@@ -8,7 +8,7 @@ function Cursor() {
       const { clientX, clientY } = e;
 
       gsap.to("#cursor", {
-        x: clientX + 9,
+        x: clientX + 10,
         y: clientY + 16,
         duration: 0.6,
         ease: "power2.out",
