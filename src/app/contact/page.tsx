@@ -3,6 +3,12 @@ import HeroSection from "@/components/common/HeroSection";
 import Icon from "@/components/common/Icon";
 import siteData from "@/config/siteData";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `Contact Us | ${siteData.name} Coffee`,
+  description: `Have a question or feedback? Get in touch with ${siteData.name} Coffee — we’d love to hear from you! Reach us online or at one of our local coffee shops.`,
+};
 
 function page() {
   return (

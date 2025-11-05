@@ -1,6 +1,13 @@
 import HeroSection from "@/components/common/HeroSection";
 import LocationCard from "@/components/locations/LocationCard";
 import locations from "@/data/locations";
+import { Metadata } from "next";
+import siteData from "@/config/siteData";
+
+export const metadata: Metadata = {
+  title: `Find Us | ${siteData.name} Coffee Locations`,
+  description: `Find your nearest ${siteData.name} Coffee location. Visit us to enjoy a cup of specialty coffee in a warm, welcoming space designed for connection and comfort.`,
+};
 
 function page() {
   return (

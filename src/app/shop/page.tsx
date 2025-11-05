@@ -1,6 +1,13 @@
 import HeroSection from "@/components/common/HeroSection";
 import ProductsSection from "@/components/common/ProductsSection";
 import products from "@/data/products";
+import { Metadata } from "next";
+import siteData from "@/config/siteData";
+
+export const metadata: Metadata = {
+  title: `Shop Coffee Beans & Merch | ${siteData.name} Coffee Shop`,
+  description: `Bring ${siteData.name} Coffee home! Browse our curated selection of specialty coffee beans, brewing gear, and merchandise available for online purchase.`,
+};
 
 function page() {
   return (
