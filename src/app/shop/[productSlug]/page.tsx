@@ -1,23 +1,43 @@
 import Heading from "@/components/common/Heading";
 import Icon from "@/components/common/Icon";
 import products from "@/data/products";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import siteData from "@/config/siteData";
 
 type ProductPageProps = { params: { productSlug: string } };
 
-function page({ params }: ProductPageProps) {
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
   const { productSlug } = params;
-
-  const product = products.find((product) => product.slug === productSlug);
+  const product = products.find((item) => item.slug === productSlug);
 
   if (!product) {
-    return notFound();
+    return {
+      title: `Product Not Found | ${siteData.name} Coffee Shop`,
+      description: `The product you are looking for could not be found on ${siteData.name}. Explore our full menu for more coffee options.`,
+    };
   }
+
+  return {
+    title: `${product.title} | ${siteData.name} Coffee Shop`,
+    description: `Discover ${product.title} — ${product.subtitle}. ${product.description}`,
+  };
+}
+
+function Page({ params }: ProductPageProps) {
+  const { productSlug } = params;
+  const product = products.find((item) => item.slug === productSlug);
+
+  if (!product) return notFound();
+
   return (
-    <main className="">
+    <main>
       <div className="pt-8xl lg:pt-11xl px-micro lg:px-base pb-micro lg:pb-base">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-base">
+          {/* Product Image */}
           <div className="lg:col-span-3 overflow-hidden">
             <Image
               src={product.image}
@@ -26,21 +46,18 @@ function page({ params }: ProductPageProps) {
             />
           </div>
 
+          {/* Product Details */}
           <div className="lg:col-span-2 flex flex-col gap-base p-base lg:p-3xl text-small text-deep">
-            <div className="">
-              <div className="flex flex-col gap-micro">
-                <Heading
-                  level={5}
-                  className="text-dark font-bold text-large lg:text-3xlarge"
-                >
-                  {product.title}
-                </Heading>
-
-                <div className="">{product.subtitle}</div>
-
-                <div className="font-bold text-core text-dark">
-                  ${product.price}
-                </div>
+            <div className="flex flex-col gap-micro">
+              <Heading
+                level={5}
+                className="text-dark font-bold text-large lg:text-3xlarge"
+              >
+                {product.title}
+              </Heading>
+              <div>{product.subtitle}</div>
+              <div className="font-bold text-core text-dark">
+                ${product.price}
               </div>
             </div>
 
@@ -48,19 +65,16 @@ function page({ params }: ProductPageProps) {
 
             <div className="flex flex-col gap-micro">
               <div className="flex items-center gap-tiny">
-                <Icon name="truck" /> <p className="">Same day delivery</p>
+                <Icon name="truck" /> <p>Same day delivery</p>
               </div>
-
               <div className="flex items-center gap-tiny">
-                <Icon name="coffee" /> <p className="">Quality checked</p>
+                <Icon name="coffee" /> <p>Quality checked</p>
               </div>
             </div>
 
-            <div className="">
-              <button className="w-full py-compact px-regular font-bold text-core text-dark bg-brand-primary rounded-xl">
-                Purchase
-              </button>
-            </div>
+            <button className="w-full py-compact px-regular font-bold text-core text-dark bg-brand-primary rounded-xl">
+              Purchase
+            </button>
           </div>
         </div>
       </div>
@@ -68,4 +82,4 @@ function page({ params }: ProductPageProps) {
   );
 }
 
-export default page;
+export default Page;
