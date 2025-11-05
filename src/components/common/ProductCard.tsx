@@ -6,13 +6,16 @@ import Link from "next/link";
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <article key={product.id} className="bg-light rounded-base overflow-hidden">
+    <article
+      key={product.id}
+      className="group bg-light rounded-base overflow-hidden"
+    >
       <Link href={`${ROUTES.shop}/${product.slug}`} className="flex flex-col">
         <div>
           <Image
             src={product.image}
             alt={product.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-110 transition-all duration-normal ease-in-out"
           />
         </div>
 
