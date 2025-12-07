@@ -6,18 +6,18 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import siteData from "@/config/siteData";
 
-type ProductPageProps = { params: { productSlug: string } };
+type ProductPageProps = { params: Promise<{ productSlug: string }> };
 
-// Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const product = products.find((item) => item.slug === params.productSlug);
+  const { productSlug } = await params;
+  const product = products.find((item) => item.slug === productSlug);
 
   if (!product) {
     return {
       title: `Product Not Found | ${siteData.name} Coffee Shop`,
-      description: `The product you are looking for could not be found on ${siteData.name}. Explore our full menu for more coffee options.`,
+      description: `The product you are looking for could not be found on ${siteData.name}.`,
     };
   }
 
@@ -27,15 +27,16 @@ export async function generateMetadata({
   };
 }
 
-// Tell Next.js all possible dynamic paths
 export async function generateStaticParams() {
   return products.map((product) => ({
     productSlug: product.slug,
   }));
 }
 
-function Page({ params }: ProductPageProps) {
-  const product = products.find((item) => item.slug === params.productSlug);
+export default async function Page({ params }: ProductPageProps) {
+  const { productSlug } = await params;
+
+  const product = products.find((item) => item.slug === productSlug);
   if (!product) return notFound();
 
   return (
@@ -84,5 +85,3 @@ function Page({ params }: ProductPageProps) {
     </main>
   );
 }
-
-export default Page;
