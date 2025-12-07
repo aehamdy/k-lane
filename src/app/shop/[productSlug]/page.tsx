@@ -8,11 +8,11 @@ import siteData from "@/config/siteData";
 
 type ProductPageProps = { params: { productSlug: string } };
 
+// Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const { productSlug } = params;
-  const product = products.find((item) => item.slug === productSlug);
+  const product = products.find((item) => item.slug === params.productSlug);
 
   if (!product) {
     return {
@@ -27,17 +27,21 @@ export async function generateMetadata({
   };
 }
 
-function Page({ params }: ProductPageProps) {
-  const { productSlug } = params;
-  const product = products.find((item) => item.slug === productSlug);
+// Tell Next.js all possible dynamic paths
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    productSlug: product.slug,
+  }));
+}
 
+function Page({ params }: ProductPageProps) {
+  const product = products.find((item) => item.slug === params.productSlug);
   if (!product) return notFound();
 
   return (
     <main>
       <div className="pt-8xl lg:pt-11xl px-micro lg:px-base pb-micro lg:pb-base">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-base">
-          {/* Product Image */}
           <div className="lg:col-span-3 overflow-hidden">
             <Image
               src={product.image}
@@ -46,7 +50,6 @@ function Page({ params }: ProductPageProps) {
             />
           </div>
 
-          {/* Product Details */}
           <div className="lg:col-span-2 flex flex-col gap-base p-base lg:p-3xl text-small text-deep">
             <div className="flex flex-col gap-micro">
               <Heading
